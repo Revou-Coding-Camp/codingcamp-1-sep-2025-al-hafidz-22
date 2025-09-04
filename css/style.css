@@ -24,3 +24,47 @@ body {
   box-shadow: 0 0 5px rgba(99, 100, 241, 0.2); /* glow effect */
   width: 600px;
 }
+
+/* Title */
+.todo-app .title h1 {
+  color: #e0e7ff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* Form */
+#todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#todo-form input[type="text"],
+#todo-form input[type="date"] {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #2c4466;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+#todo-form input[type="text"]::placeholder {
+  color: #94a3b8;
+}
+
+#todo-form button {
+  padding: 0 15px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#todo-form button:hover {
+  background: #4f46e5;
+}
