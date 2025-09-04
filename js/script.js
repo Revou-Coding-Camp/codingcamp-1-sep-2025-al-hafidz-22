@@ -57,3 +57,20 @@ function renderTodos(filter = "all") {
     todoTableBody.appendChild(tr);
   });
 }
+
+// Event listener untuk select status
+document.addEventListener("change", (e) => {
+  if (e.target.classList.contains("status-select")) {
+    const idx = e.target.dataset.index;
+    todos[idx].status = e.target.value;
+  }
+});
+
+// Event listener untuk delete per task
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-task")) {
+    const idx = e.target.dataset.index;
+    todos.splice(idx, 1);
+    renderTodos(currentFilter);
+  }
+});
