@@ -87,7 +87,22 @@ todoForm.addEventListener("submit", (e) => {
   renderTodos(currentFilter);
 });
 
+// fitur hapus semua
 deleteButton.addEventListener("click", () => {
   todos = [];
+  renderTodos(currentFilter);
+});
+
+filterButton.addEventListener("click", () => {
+  if (currentFilter === "all") {
+    currentFilter = "Selesai";
+    filterButton.textContent = "TAMPILKAN SELESAI";
+  } else if (currentFilter === "Selesai") {
+    currentFilter = "Belum Selesai";
+    filterButton.textContent = "TAMPILKAN BELUM SELESAI";
+  } else {
+    currentFilter = "all";
+    filterButton.textContent = "TAMPILKAN SEMUA";
+  }
   renderTodos(currentFilter);
 });
