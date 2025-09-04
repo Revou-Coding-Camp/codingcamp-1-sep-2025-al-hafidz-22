@@ -74,3 +74,15 @@ document.addEventListener("click", (e) => {
     renderTodos(currentFilter);
   }
 });
+
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  todos.push({
+    task: todoInput.value,
+    dueDate: todoDate.value,
+    status: "Belum Selesai",
+  });
+  todoInput.value = "";
+  todoDate.value = "";
+  renderTodos(currentFilter);
+});
