@@ -9,14 +9,15 @@ const filterButton = document.getElementById("filter-button");
 // Array untuk menyimpan task
 let todos = [];
 
-// Filter saat ini
-let currentFilter = "all";
+// Status filter saat ini (default tombol)
+let currentFilter = "filter";
 
+// Fungsi renderTodos untuk menampilkan task di tabel
 function renderTodos(filter = "all") {
   todoTableBody.innerHTML = "";
 
   const filteredTodos = todos.filter((todo) => {
-    if (filter === "all") return true;
+    if (filter === "all" || filter === "filter") return true;
     return todo.status === filter;
   });
 
@@ -75,6 +76,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// Tambah task baru
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   todos.push({
@@ -87,26 +89,42 @@ todoForm.addEventListener("submit", (e) => {
   renderTodos(currentFilter);
 });
 
-// fitur hapus semua
+// Tombol HAPUS SEMUA
 deleteButton.addEventListener("click", () => {
   todos = [];
   renderTodos(currentFilter);
 });
 
-//  fitur filter task berdasarkan status
+// Tombol FILTER siklus 5 pilihan
 filterButton.addEventListener("click", () => {
-  if (currentFilter === "all") {
-    currentFilter = "Selesai";
-    filterButton.textContent = "TAMPILKAN SELESAI";
-  } else if (currentFilter === "Selesai") {
-    currentFilter = "Belum Selesai";
-    filterButton.textContent = "TAMPILKAN BELUM SELESAI";
-  } else {
-    currentFilter = "all";
-    filterButton.textContent = "TAMPILKAN SEMUA";
+  switch (currentFilter) {
+    case "filter":
+      currentFilter = "Selesai";
+      filterButton.textContent = "TAMPILKAN SELESAI";
+      break;
+    case "Selesai":
+      currentFilter = "Belum Selesai";
+      filterButton.textContent = "TAMPILKAN BELUM SELESAI";
+      break;
+    case "Belum Selesai":
+      currentFilter = "Sedang Dikerjakan";
+      filterButton.textContent = "TAMPILKAN SEDANG DIKERJAKAN";
+      break;
+    case "Sedang Dikerjakan":
+      currentFilter = "Tertunda";
+      filterButton.textContent = "TAMPILKAN TERTUNDA";
+      break;
+    case "Tertunda":
+      currentFilter = "all";
+      filterButton.textContent = "TAMPILKAN SEMUA";
+      break;
+    case "all":
+      currentFilter = "filter";
+      filterButton.textContent = "FILTER";
+      break;
   }
   renderTodos(currentFilter);
 });
 
-// Render awal
+// Render awal tabel
 renderTodos();
