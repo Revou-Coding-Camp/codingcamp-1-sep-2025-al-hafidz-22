@@ -25,11 +25,27 @@
 
           <button type="submit">+</button>
         </form>
-        <!-- fitur filter -->
+        <!-- fitur filter dan hapus -->
         <div class="todo-filter">
           <button type="button" id="filter-button">FILTER</button>
           <button type="button" id="delete-button">DELETE ALL</button>
         </div>
+        <!-- daftar todo dalam tabel -->
+        <table id="todo-table" border="1">
+          <thead>
+            <tr>
+              <th>TASK</th>
+              <th>DUE DATE</th>
+              <th>STATUS</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="4">No task found</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
     </main>
   </body>
