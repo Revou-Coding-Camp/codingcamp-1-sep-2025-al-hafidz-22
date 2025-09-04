@@ -93,6 +93,7 @@ deleteButton.addEventListener("click", () => {
   renderTodos(currentFilter);
 });
 
+//  fitur filter task berdasarkan status
 filterButton.addEventListener("click", () => {
   if (currentFilter === "all") {
     currentFilter = "Selesai";
@@ -106,3 +107,6 @@ filterButton.addEventListener("click", () => {
   }
   renderTodos(currentFilter);
 });
+
+// Render awal
+renderTodos();
