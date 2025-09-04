@@ -86,3 +86,8 @@ todoForm.addEventListener("submit", (e) => {
   todoDate.value = "";
   renderTodos(currentFilter);
 });
+
+deleteButton.addEventListener("click", () => {
+  todos = [];
+  renderTodos(currentFilter);
+});
