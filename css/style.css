@@ -14,3 +14,13 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+/* Main container */
+.todo-app {
+  background: #273242; /* slightly lighter dark */
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid #2c4466;
+  box-shadow: 0 0 5px rgba(99, 100, 241, 0.2); /* glow effect */
+  width: 600px;
+}
