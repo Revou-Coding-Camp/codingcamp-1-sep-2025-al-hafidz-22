@@ -7,10 +7,15 @@ const deleteButton = document.getElementById("delete-button");
 const filterButton = document.getElementById("filter-button");
 
 // Array untuk menyimpan task
-let todos = [];
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-// Status filter saat ini (default tombol)
-let currentFilter = "filter";
+// Filter saat ini
+let currentFilter = "filter"; // status awal tombol
+
+// Simpan todos ke localStorage
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
 
 // Fungsi renderTodos untuk menampilkan task di tabel
 function renderTodos(filter = "all") {
@@ -64,6 +69,7 @@ document.addEventListener("change", (e) => {
   if (e.target.classList.contains("status-select")) {
     const idx = e.target.dataset.index;
     todos[idx].status = e.target.value;
+    saveTodos();
   }
 });
 
@@ -72,6 +78,7 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-task")) {
     const idx = e.target.dataset.index;
     todos.splice(idx, 1);
+    saveTodos();
     renderTodos(currentFilter);
   }
 });
@@ -84,18 +91,20 @@ todoForm.addEventListener("submit", (e) => {
     dueDate: todoDate.value,
     status: "Belum Selesai",
   });
+  saveTodos();
   todoInput.value = "";
   todoDate.value = "";
   renderTodos(currentFilter);
 });
 
-// Tombol HAPUS SEMUA
+// Fitur hapus semua
 deleteButton.addEventListener("click", () => {
   todos = [];
+  saveTodos();
   renderTodos(currentFilter);
 });
 
-// Tombol FILTER siklus 5 pilihan
+// Fitur filter task berdasarkan status
 filterButton.addEventListener("click", () => {
   switch (currentFilter) {
     case "filter":
@@ -126,5 +135,5 @@ filterButton.addEventListener("click", () => {
   renderTodos(currentFilter);
 });
 
-// Render awal tabel
-renderTodos();
+// Render awal
+renderTodos(currentFilter);
