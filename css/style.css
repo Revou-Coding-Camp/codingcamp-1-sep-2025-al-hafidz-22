@@ -12,7 +12,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 15px; /* biar konten gak mepet di layar HP */
 }
 
 /* Main container */
@@ -22,7 +23,8 @@ body {
   border-radius: 15px;
   border: 1px solid #2c4466;
   box-shadow: 0 0 5px rgba(99, 100, 241, 0.2); /* glow effect */
-  width: 600px;
+  width: 100%;
+  max-width: 600px; /* biar rapi di desktop */
 }
 
 /* Title */
@@ -46,6 +48,7 @@ th,
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
+  flex-wrap: wrap; /* biar input bisa turun ke bawah di layar kecil */
 }
 
 #todo-form input[type="text"],
@@ -56,6 +59,7 @@ th,
   border: 1px solid #2c4466;
   background: #0f172a;
   color: #f8fafc;
+  min-width: 140px; /* biar gak terlalu kecil di layar HP */
 }
 
 #todo-form input[type="text"]::placeholder {
@@ -81,10 +85,13 @@ th,
 .todo-filter {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 .todo-filter button {
+  flex: 1;
   padding: 6px 12px;
   border: none;
   border-radius: 8px;
@@ -92,6 +99,7 @@ th,
   color: #e0e7ff;
   cursor: pointer;
   transition: 0.3s;
+  text-align: center;
 }
 
 .todo-filter button:hover {
@@ -108,10 +116,15 @@ th,
   color: #fff;
 }
 
+/* Table container */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* scroll horizontal di HP kalau tabel kepanjangan */
+}
+
 /* Table */
 #todo-table {
   width: 100%;
-  height: 100px;
   border-collapse: collapse;
   background: #101217;
   border-radius: 8px;
@@ -121,8 +134,9 @@ th,
 #todo-table th,
 #todo-table td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
   color: #e0e7ff;
+  font-size: 14px;
 }
 
 #todo-table th {
@@ -145,7 +159,7 @@ th,
 
 /* Dropdown status */
 .status-select {
-  padding: 2px 2px;
+  padding: 4px 6px;
   border-radius: 6px;
   border: 1px solid #334155; /* border gelap */
   background: #1e293b; /* background gelap */
@@ -171,4 +185,26 @@ th,
 
 .delete-task:hover {
   background: #dc2626;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+  .todo-app {
+    padding: 20px;
+  }
+
+  .todo-app .title h1 {
+    font-size: 1.5rem;
+  }
+
+  #todo-form input,
+  #todo-form button {
+    font-size: 14px;
+  }
+
+  #todo-table th,
+  #todo-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
 }
